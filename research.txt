@@ -1,0 +1,1 @@
+Retrieve data from here: http://www.spaceweatherlive.com/en/auroral-activity/kp
