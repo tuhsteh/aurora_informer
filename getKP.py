@@ -36,8 +36,7 @@ def get_aurora_chance(by_lat):
     #print "%24s:\t%s" % ("Mid Latitude Chance", middle_lat_chance[0])
     #print "%24s:\t%s" % ("Low Latitude Chance", low_lat_chance[0])
     #print "%24s:\t%s" % ("Predicted KP Max", predicted_kp_max[0])
-
-
+    
 #########################
 #
 # Function to rip the percentage out, I plan on using this later for notifying based on probability.
@@ -47,6 +46,12 @@ def rip_percent(lat):
     lat_no_percent = lat.replace("%", "")
     print lat_no_percent
 
+
+#########################
+#
+# Figures out what you chose.
+#
+#########################
 def handle_it(choices):
     if "high" in choices:
         my_answer = get_aurora_chance("high_lat")
@@ -60,7 +65,29 @@ def handle_it(choices):
     else:
         my_answer = get_aurora_chance("kp_max")
         print(my_answer)
+    ask_subscribe()
 
+
+#########################
+#
+# See if people would like to subscribe.
+#
+#########################
+def ask_subscribe():
+    maybe = raw_input("Would you to receive updates on aruroa borealis visibility? (y/n)\n")
+    if "y" in maybe:
+        print "OK we will subscribe you."
+    elif "n" in maybe:
+        print "okay, exiting..."
+    else:
+        print "Invalid selection.\n"
+        ask_subscribe()
+
+#########################
+#
+# Kick off the program.
+#
+#########################
 
 def main():
     print selectionIs
@@ -68,13 +95,12 @@ def main():
     if mychoice in latitude_options:
         handle_it(mychoice)
     else: 
-        print "Invalid selection, please try again"
+        print "Invalid selection, please try again\n"
         main()
     
 
 main()
-#blah = get_aurora_chance("kp_max")
-#print blah
+
 
 
 
