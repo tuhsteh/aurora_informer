@@ -6,3 +6,8 @@ from app import app
 def index():
     return render_template('index.html',
                            title='Aurora Informer Home')
+
+@app.route('/unsubscribe')
+def unsubscribe():
+    return render_template('unsubscribe.html',
+                           title='Unsubscribe Aurora Informer')    
