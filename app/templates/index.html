@@ -2,7 +2,7 @@
 {% block content %}
 <form class="go-bottom">
 	<div>
-		<input id="name" name="name" type="text" required>
+		{{ form.user_name(size=80) }}
 		<label for="name">Your Name</label>
 	</div>
 	<div>

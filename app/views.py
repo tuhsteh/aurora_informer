@@ -10,7 +10,7 @@ def index():
     #    print "someone clicked some shit"
     form = iSubscribe()
     if form.validate_on_submit:
-        print  "somebody said"# % user_email
+        print  "somebody said %s" % str(form.user_name.data)# % user_email
     return render_template('index.html',
                            title='Aurora Informer', # <-- you can see how title gets populated in the ~/app/templates/base.html
                            form=form) 
