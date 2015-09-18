@@ -1,0 +1,17 @@
+<!-- extends base.html -->
+{% extends "base.html" %}
+{% block content %}
+<form class="go-bottom" method="post" action="/subscribe">
+	{{ form.csrf_token }}
+	<div>
+		{{ form.user_name(size=80) }}
+		<label for="name">Your Name</label>
+	</div>
+	<div>
+		<input id="email" name="email" type="text" required>
+ 		<label for="email">Your Email</label>
+	</div>
+	<p><input type="submit" value="Subscribe"></p>
+</form>
+
+{% endblock %}
