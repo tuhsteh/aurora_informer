@@ -1,15 +1,11 @@
+<!-- extends base.html -->
 {% extends "base.html" %}
 {% block content %}
-<form class="go-bottom">
+<form class="go-bottom" method="post" action="/">
+	{{ form.csrf_token }}
 	<div>
-		{{ form.user_name(size=80) }}
-		<label for="name">Your Name</label>
+		<p>Receive e-mail notification if the aurora borealis visibility at your latitude is over 80%</p>
 	</div>
-	<div>
-		<input id="email" name="email" type="text" required>
- 		<label for="email">Your Email</label>
-	</div>
-	<p><input type="submit" value="Subscribe"></p>
 </form>
 
 {% endblock %}

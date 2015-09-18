@@ -9,4 +9,7 @@ from flask_wtf import Form
 
 class iSubscribe(Form):
     #user_email = StringField('email', validators=[DataRequired()]) # DataRequired ensures the form isn't empty.'
-    user_name = StringField('user_name', validators=[DataRequired()]) # Not being used at the moment..
+    user_name = StringField('name', validators=[DataRequired()]) # Not being used at the moment..
+    
+class a_index(Form):
+    blah = "wasted_space"
