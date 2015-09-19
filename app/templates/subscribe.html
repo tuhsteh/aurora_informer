@@ -8,8 +8,12 @@
 		<label for="name">Your Name</label>
 	</div>
 	<div>
-		<input id="email" name="email" type="text" required>
+		{{ form.user_email(size=80) }}
  		<label for="email">Your Email</label>
+	</div>
+	<div>
+		{{ form.user_zip(size=80) }}
+ 		<label for="zip">Your Postal Code</label>
 	</div>
 	<p><input type="submit" value="Subscribe"></p>
 </form>
