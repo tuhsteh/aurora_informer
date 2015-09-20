@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect
 from app import app
 from .forms import iSubscribe
 from .forms import a_index
-from .aurora_utils import get_latitude
+from .aurora_utils import get_geographic_latitude
 
 
 @app.route('/')
@@ -21,11 +21,12 @@ def registration():
     form = iSubscribe()
     if form.validate_on_submit():
         flash("did something!")
-        print  "User name: %s" % str(form.user_name.data)
+        usename = str(form.user_name.data)
+        print  "User name: %s" %usename
         print  "User Email: %s" % str(form.user_email.data)
         print  "User Zip Code: %s" % str(form.user_zip.data)
         user_zip = str(form.user_zip.data)
-        print get_latitude(user_zip)
+        print get_geographic_latitude(user_zip)
         
         return redirect('/')
     return render_template('subscribe.html',
