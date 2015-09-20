@@ -22,11 +22,12 @@ def registration():
     if form.validate_on_submit():
         flash("did something!")
         usename = str(form.user_name.data)
-        print  "User name: %s" %usename
-        print  "User Email: %s" % str(form.user_email.data)
-        print  "User Zip Code: %s" % str(form.user_zip.data)
         user_zip = str(form.user_zip.data)
-        print get_geographic_latitude(user_zip)
+        geographic_latitude = get_geographic_latitude(user_zip)
+        print "User Name: %s" %usename
+        print "User Email: %s" % str(form.user_email.data)
+        print "User Zip Code: %s" % str(form.user_zip.data)
+        print "Geographic Latitude: %s" % geographic_latitude
         
         return redirect('/')
     return render_template('subscribe.html',
