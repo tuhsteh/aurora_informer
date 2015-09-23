@@ -1,4 +1,3 @@
-#!flask/bin/python
 #from flask.ext.wtf import Form
 #from wtforms import Form
 from wtforms import StringField, BooleanField
