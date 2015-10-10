@@ -1,11 +1,18 @@
 import json
 import urllib2
+from aacgmv2 import convert
+import datetime
+import time
+
+
+
 #from lxml import html
 
 
 #import requests 
 
-page = urllib2.urlopen('http://www.spaceweatherlive.com/en/auroral-activity/kp')
+#page = urllib2.urlopen('http://www.spaceweatherlive.com/en/auroral-activity/kp')
+page = urllib2.urlopen('http://www.spaceweatherlive.com/en/auroral-activity/')
 #tree = html.fromstring(page.text)
 
 
@@ -17,15 +24,23 @@ page = urllib2.urlopen('http://www.spaceweatherlive.com/en/auroral-activity/kp')
 # NOTE: We will need to find a way to convert this to geomagnetic latitude for the program to work.
 #
 #
-def get_geographic_latitude(user_zip):
+def get_geo_coords(user_zip):
     url = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=true" % user_zip
     response = urllib2.urlopen(url)
     data = json.loads(response.read())
     geographic_latitude = data["results"][0]["geometry"]["location"]["lat"]
-    return geographic_latitude
+    geographic_longitude = data["results"][0]["geometry"]["location"]["lng"]
+    lats = [geographic_latitude, geographic_longitude]                          
+    
+    return lats
     #print float(int(northeast_lat) + int(southwest_lat)) / (2) #The math for the average isn't quite right.
 
+def geo2mag(lat, lon, alt):
+    glat, glon = convert([90, -90], 0, 0, None, a2g=True) # None = current date/time.
+    print glat
+    print glon
 
+geo2mag(60, 15, 300)
 ################################
 #
 # This function identifies percentage chance of visibility by latitude range
