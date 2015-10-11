@@ -33,14 +33,17 @@ def get_geo_coords(user_zip):
     lats = [geographic_latitude, geographic_longitude]                          
     
     return lats
-    #print float(int(northeast_lat) + int(southwest_lat)) / (2) #The math for the average isn't quite right.
 
 def geo2mag(lat, lon, alt):
-    glat, glon = convert([90, -90], 0, 0, None, a2g=True) # None = current date/time.
-    print glat
-    print glon
+    #Latitudes range from -90 to 90.
+    #Longitudes range from -180 to 180. (Maybe, who knows --  http://ccmc.gsfc.nasa.gov/requests/instant/ranges.php
+    #Verified with http://ccmc.gsfc.nasa.gov/requests/instant/instant1.php?model=AACGM&type=1
+    mlat, mlon = convert(33.7550, 84.3900, 350, None)
 
-geo2mag(60, 15, 300)
+    print mlat
+    print mlon
+
+#geo2mag(60, 15, 300)
 ################################
 #
 # This function identifies percentage chance of visibility by latitude range

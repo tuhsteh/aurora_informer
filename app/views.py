@@ -1,8 +1,9 @@
 from flask import render_template, flash, redirect
-from app import app
+from app import app, dbhandler
 from .forms import iSubscribe
 from .forms import a_index
 from .aurora_utils import get_geo_coords
+from .dbhandler import create_user
 #from app.aurora_utils import get_geo_coords
 
 
@@ -31,7 +32,7 @@ def registration():
         print "User Zip Code: %s" % str(form.user_zip.data)
         print "Geographic Latitude: %s" % results[0]
         print "Geographic Longitude: %s" % results[1]
-        
+        create_user(usename, str(form.user_email.data), int(results[0]), int(results[1]), int(user_zip))
         
         return redirect('/')
     return render_template('subscribe.html',
