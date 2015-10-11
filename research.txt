@@ -1,1 +1,18 @@
-Retrieve data from here: http://www.spaceweatherlive.com/en/auroral-activity/kp
+Retrieve data from here: http://www.spaceweatherlive.com/en/auroral-activity
+
+
+There is no exact definition where that boundary lies but the 
+ - high latitude is situated around the 60° magnetic latitude and higher; 
+ - the middle latitudes between the 50° and 60° magnetic latitude and 
+ - everything below the 50° magnetic latitude is considered to be in the category of low latitude.
+ 
+ 
+========================================================================================================
+ When geomagnetic activity is low, the aurora typically is located, in the hours around midnight, 
+ at about 67 degrees magnetic latitude. As activity increases, the region of aurora expands toward 
+ the equator. When geomagnetic activity is very high, the aurora may be seen at middle and low latitude 
+ locations that would otherwise rarely experience the polar lights. The map below shows if you are 
+ located on the high, the middle, or the low latitudes
+ 
+ http://www.spaceweatherlive.com/en/help/the-low-middle-and-high-latitude
+=========================================================================================================

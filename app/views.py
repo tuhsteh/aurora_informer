@@ -3,6 +3,8 @@ from app import app, dbhandler
 from .forms import iSubscribe
 from .forms import a_index
 from .aurora_utils import get_geo_coords
+from .aurora_utils import get_elevation
+from .aurora_utils import geo2mag
 from .dbhandler import create_user
 #from app.aurora_utils import get_geo_coords
 
@@ -32,7 +34,11 @@ def registration():
         print "User Zip Code: %s" % str(form.user_zip.data)
         print "Geographic Latitude: %s" % results[0]
         print "Geographic Longitude: %s" % results[1]
-        create_user(usename, str(form.user_email.data), int(results[0]), int(results[1]), int(user_zip))
+        altitude = get_elevation(results[0], results[1])
+        print "Altitude (kilometers): %s" % altitude
+        geomagneticLat = geo2mag(results[0], results[1], altitude)
+        print "Geomagnetic Latitude: %s" % geomagneticLat
+        #create_user(usename, str(form.user_email.data), int(results[0]), int(results[1]), int(user_zip))
         
         return redirect('/')
     return render_template('subscribe.html',

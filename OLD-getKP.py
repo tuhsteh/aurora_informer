@@ -2,7 +2,7 @@ from lxml import html
 import requests
 import smtplib
 
-page = requests.get('http://www.spaceweatherlive.com/en/auroral-activity/kp')
+page = requests.get('http://www.spaceweatherlive.com/en/auroral-activity/')
 tree = html.fromstring(page.text)
 
 predicted_kp_max = ""
@@ -23,16 +23,16 @@ selectionIs += "low_lat\n"
 def get_aurora_chance(by_lat):
     if by_lat == "kp_max":
         predicted_kp_max = tree.xpath('//td[text()="Predicted Kp max"]/following-sibling::td[1]/text()')
-        return predicted_kp_max[0]
+        print predicted_kp_max[0]
     elif by_lat == "high_lat":
         high_lat_chance = tree.xpath('//td[text()="High latitude"]/following-sibling::td[1]/span/text()')
-        return high_lat_chance[0]
+        print high_lat_chance[0]
     elif by_lat == "middle_lat":
         middle_lat_chance = tree.xpath('//td[text()="Middle latitude"]/following-sibling::td[1]/span/text()')
-        return middle_lat_chance[0]
+        print middle_lat_chance[0]
     elif by_lat == "low_lat":
         low_lat_chance = tree.xpath('//td[text()="Low latitude"]/following-sibling::td[1]/span/text()')
-        return low_lat_chance[0]
+        print low_lat_chance[0]
     #print "%24s:\t%s" % ("High Latitude Chance", high_lat_chance[0])
     #print "%24s:\t%s" % ("Mid Latitude Chance", middle_lat_chance[0])
     #print "%24s:\t%s" % ("Low Latitude Chance", low_lat_chance[0])
@@ -56,11 +56,11 @@ def rip_percent(lat):
 def handle_it(choices):
     if "high" in choices:
         my_answer = get_aurora_chance("high_lat")
-        #print(my_answer)
+        print(my_answer)
         yield(my_answer)
     elif "middle" in choices:
         my_answer = get_aurora_chance("middle_lat")
-        #print(my_answer)
+        print(my_answer)
         yield(my_answer)
     elif "low" in choices:
         my_answer = get_aurora_chance("low_lat")
@@ -130,7 +130,8 @@ def main():
 
 #main()
 
-act_scubscribe()
+#main()
+get_aurora_chance("middle_lat")
 
 
 
