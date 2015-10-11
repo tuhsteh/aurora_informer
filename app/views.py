@@ -38,7 +38,10 @@ def registration():
         print "Altitude (kilometers): %s" % altitude
         geomagneticLat = geo2mag(results[0], results[1], altitude)
         print "Geomagnetic Latitude: %s" % geomagneticLat
-        #create_user(usename, str(form.user_email.data), int(results[0]), int(results[1]), int(user_zip))
+        #create_user(usename, str(form.user_email.data), int(results[0]), int(results[1]), geomagneticLat, int(user_zip))
+        email = str(form.user_email.data)
+        #geo_lat, geo_lon, altitude, geomagnetic_lat, zip
+        create_user(usename, email, results[0], results[1], altitude, geomagneticLat, str(form.user_zip.data))
         
         return redirect('/')
     return render_template('subscribe.html',
